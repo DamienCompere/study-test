@@ -1,6 +1,25 @@
 
-
-<h1><%= @bug.title %></h1>
-<p><%= @bug.description %></p>
-
-<%= link_to 'Remove', @bug, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="container">
+  <h2><%= @bug.title %></h2>
+  <p><%= @bug.description %></p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Created by</th>
+        <th>To</th>
+        <th>State</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @bug.owner %></td>
+        <td><%= @bug.assignate %></td>
+        <td><%= @bug.state %></td>
+        <td><%= link_to "Edit", edit_bug_path, class: "btn btn-success" %></td>
+        <td><%= link_to 'Trash', @bug, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

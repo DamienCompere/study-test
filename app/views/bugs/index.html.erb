@@ -1,6 +1,34 @@
-<h1 title="Bugs list">Bugs list</h1>
-<ul>
+<div class="container">
+    <h1 title="Bugs list">Bugs list</h1>
+    <a href="/bugs/new" title="Create a new bug" class="btn btn-warning">Create a new bug</a>
+
+  <p title="Please find here all the bugs :">Please find here all the bugs :</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Assignated to</th>
+        <th>State</th>
+        <th>Check it</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @bugs.each do |bug|%>
-    <li><%= link_to bug.title, bug_path(bug) %></li>
-    <% end %>
-</ul>
+      <tr>
+        <td><%= bug.owner%></td>
+        <td><%= bug.title%></td>
+        <td><%= bug.description%></td>
+        <td><%= bug.assignate%></td>
+        <td><%= bug.state%></td>
+        <td><%= link_to "check it", bug_path(bug), class: "btn btn-primary"%></td>
+        <td><%= link_to "edit", edit_bug_path(bug), class: "btn btn-success"%></td>
+        <td><%= link_to "Trash", bug,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

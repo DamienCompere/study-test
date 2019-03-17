@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .btn.btn-primary, .btn.btn-warning, .btn.btn-success, .btn.btn-danger{
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
+ }
+
+
+div.actions{
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.form-group{
+    width: 11%;
+    margin: auto;
+}
+#error_explanation{
+    margin:auto;
+}

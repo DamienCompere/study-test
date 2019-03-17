@@ -1,13 +1,14 @@
-<h1 title="Study-Advisor / Test-study">Study-Advisor / Test-study</h1>
+<h1 title="Study-Advisor / Test-study" >Study-Advisor / Test-study</h1>
 
+<div class="navigation">
+  <% if current_user %>
+    <% if current_user.username == "admin" %>
+      <a href="/users/new" title="Create a new user" class="btn btn-warning">Create a new user</a>
+    <%end%>
+    <%= link_to "Check all bugs", bugs_path, class:"btn btn-success"%>
+    <%= link_to "Log Out", logout_path, class: "btn btn-primary", title: "lougout" %>
+  <% else %>
+    <%= link_to "Log In", login_path, class: "btn btn-primary", title: 'Login'%>
+  <% end %>
 
-<% if current_user %>
-  Logged in as <%= current_user.username %>.
-  <% if current_user.username == "admin" %>
-    <a href="/users/new" title="Create a new user">Create a new user</a>
-  <%end%>
-  <%= link_to "Log Out", logout_path %>
-<% else %>
-  <%= link_to "Log In", login_path %>
-<% end %>
-
+</div>
