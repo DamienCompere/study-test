@@ -1,5 +1,11 @@
 class BugsController < ApplicationController
+
+  # Check if user is logged otherwise he is redireted to the login page
+  before_action :authorize
+  before_action :set_users_and_states, only: [:new, :create] # Before new and create action set the @users, @states
+
   def index
+    
     @bugs = Bug.all
     puts @bugs
 
@@ -20,9 +26,9 @@ class BugsController < ApplicationController
    
     respond_to do |format|
       if @bug.persisted?
-        format.html { redirect_to bugs_path, notice: 'Bug was successfully created.' }
+        format.html {redirect_to bugs_path, notice: 'Bug was successfully created.'}
       else
-        format.html { render :new }
+        format.html {render :new}
       end
     end
    end
@@ -53,6 +59,9 @@ class BugsController < ApplicationController
     params.require(:bug).permit(:owner, :title, :description, :assignate, :state)
   end
 
-  
+  def set_users_and_states
+    @users = User.all
+    @states = Bug.states
+  end
 
 end

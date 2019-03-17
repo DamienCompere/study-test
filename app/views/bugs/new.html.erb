@@ -1,15 +1,18 @@
 <h1 title="Create a new bug">Create a new bug</h1>
 
-<%= form_with model: @bug do |form| %>
-    <% if @bug.errors.any? %>
-        <h2>Errors : </h2>
-        <ul>
-            <% @bug.errors.full_messages.each do |message| %>
-                <li><<%= message %>/li>
-            <% end %>
-        </ul>
+<%= form_with model: @bug, local: true do |form| %>
 
-    <% end %>
+  <% if @bug.errors.any? %>
+    <div id="error_explanation">
+      <h2>Errors : </h2>
+
+      <ul>
+        <% @bug.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <%= form.select :owner, @users.collect {|u| [ u.username, u.id ] } %>
     <%= form.text_field :title, placeholder: "title" %>
