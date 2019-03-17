@@ -1,0 +1,6 @@
+
+
+<h1><%= @bug.title %></h1>
+<p><%= @bug.description %></p>
+
+<%= link_to 'Remove', @bug, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_104609) do
+ActiveRecord::Schema.define(version: 2019_03_16_145249) do
+
+  create_table "bugs", force: :cascade do |t|
+    t.integer "state", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "owner"
+    t.string "title"
+    t.text "description"
+    t.string "assignate"
+    t.index ["state"], name: "index_bugs_on_state"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

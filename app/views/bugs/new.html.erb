@@ -1,0 +1,23 @@
+<h1 title="Create a new bug">Create a new bug</h1>
+
+<%= form_with model: @bug do |form| %>
+    <% if @bug.errors.any? %>
+        <h2>Errors : </h2>
+        <ul>
+            <% @bug.errors.full_messages.each do |message| %>
+                <li><<%= message %>/li>
+            <% end %>
+        </ul>
+
+    <% end %>
+
+    <%= form.select :owner, @users.collect {|u| [ u.username, u.id ] } %>
+    <%= form.text_field :title, placeholder: "title" %>
+    <%= form.text_area :description, placeholder: "description" %>
+    <%= form.select :assignate, @users.collect {|u| [ u.username, u.id ] } %>
+    <%= form.select :state, @states.collect {|k,v|[k, k]} %>
+
+    <%= form.submit %>
+<% end %>
+
+

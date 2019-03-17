@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Bug.create(owner: 'admin', title: 'test', description: "test to check", assignate: "admin")
+Bug.create(owner: 'Damien', title: 'test number two', description: "test to check number two", assignate: "admin")
