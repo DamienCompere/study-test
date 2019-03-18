@@ -2,7 +2,7 @@ class BugsController < ApplicationController
 
   # Check if user is logged otherwise he is redireted to the login page
   before_action :authorize
-  before_action :set_users_and_states, only: [:new, :create, :edit] # Before new, edit and create action set the @users, @states
+  before_action :set_users_and_states, only: [:new, :create, :edit, :update] # Before new, edit and create action set the @users, @states
   before_action :current_bug, only: [:show, :edit, :update, :destroy] # Before show, edit, update, destroy set the current bug
 
   def index
@@ -11,14 +11,12 @@ class BugsController < ApplicationController
   end
 
   def show
-   # @bug = Bug.find(params[:id])
   end
 
   def new
     #New Bug
     @bug = Bug.new
-   # @users = User.all
-   # @states = Bug.states
+  
   end
 
   def create
@@ -35,20 +33,21 @@ class BugsController < ApplicationController
    end
 
   def edit
-    # @bug = Bug.find(params[:id])
-    # @users = User.all
-    # @states = Bug.states
+
   end
 
   def update
-   # @bug = Bug.find(params[:id])
-    @bug.update(bug_params)
-
-    redirect_to bug_path(@bug)
+    respond_to do |format|
+      if @bug.update(bug_params)
+        format.html { redirect_to bugs_path, notice: 'Bug was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
+  
 
   def destroy
-   # @bug = Bug.find(params[:id])
    #delete bug
     @bug.destroy
     
@@ -58,12 +57,13 @@ class BugsController < ApplicationController
   private
 
   def bug_params
-    params.require(:bug).permit(:owner, :title, :description, :assignate, :state)
+    params.require(:bug).permit(:owner, :title, :description, :assignate, :state, :severity)
   end
 
   def set_users_and_states
     @users = User.all
     @states = Bug.states
+    @severity = Bug.severities
   end
 
   def current_bug

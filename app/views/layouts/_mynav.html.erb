@@ -6,7 +6,7 @@
     <% if current_user %>
     <ul class="nav navbar-nav">
       <li class="active"><%= link_to "Home", root_path %></li>
-        <% if current_user.username == "admin" %>
+        <% if current_user.role == "admin" %>
             <li> <a href="/users/new" title="Create a new user">Create a new user</a></li>
             <li> <%= link_to "Check all users", users_path %></li>
         <%end%>

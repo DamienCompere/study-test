@@ -39,3 +39,10 @@ h1{
 #error_explanation{
     margin:auto;
 }
+#alert{
+    text-align: center;
+    color: red;
+}
+.center{
+    text-align: center; 
+}

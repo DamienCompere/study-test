@@ -1,5 +1,8 @@
 <h1>New User</h1>
 
 <%= render 'form', user: @user %>
-
+<p>You need to be connected to access this</p>
 <%# <%= link_to 'Back', users_path %> 
+
+<p><%= @current_user%></p>
+

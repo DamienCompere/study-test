@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>Username</th>
+        <th>Role</th>
         <th>Show</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -17,12 +18,14 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
+        <td><%= user.role %></td>
         <td><%= link_to 'Show', user, class:"btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-success"  %></td>
         <td><%= link_to 'Trash', user, class:"btn btn-danger" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
-
     </tbody>
   </table>
 </div>
+
+<%= @current_user%>

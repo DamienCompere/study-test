@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_145249) do
+ActiveRecord::Schema.define(version: 2019_03_18_102759) do
 
   create_table "bugs", force: :cascade do |t|
     t.integer "state", default: 0
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_03_16_145249) do
     t.string "title"
     t.text "description"
     t.string "assignate"
+    t.integer "severity", default: 0
+    t.index ["severity"], name: "index_bugs_on_severity"
     t.index ["state"], name: "index_bugs_on_state"
   end
 
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_03_16_145249) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
+    t.index ["role"], name: "index_users_on_role"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
