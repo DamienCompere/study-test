@@ -13,8 +13,8 @@
   <% end %>
 <%# form %>
   <div class="form-group">
-    <%= label_tag :owner %>
-    <%= form.select :owner, @users.collect {|u| [ u.username, u.username ] } %>
+    <%= label_tag :owner %> : <%= @current_user.username%>
+     <%= form.radio_button :owner, @current_user.username, :checked => true %>
   </div>
 
   <div class="form-group">
@@ -47,3 +47,4 @@
   </div>
 <% end %>
 
+  <%= @current_user.username%>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_role, only: [:new, :create, :edit]
+  # before_action :require_login, only: [:create, :edit, :show, :new]
+  before_action :require_admin, only: [:create, :edit, :show, :new, :index, :update, :destroy]
 
   # GET /users
   # GET /users.json
